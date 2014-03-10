@@ -1,12 +1,3 @@
-var isNode = false;
-if (typeof window === 'undefined') {
-    isNode = true;
-} else {
-    isNode = false;
-}
-if(isNode)
-    var clc = Npm.require('cli-color');
-
 DEBUGX = (function(){
     var _group = {};
     var _format = '{{time}} - {{group}}: {{message}}';
@@ -110,37 +101,39 @@ DEBUGX = (function(){
             return output;
         }
     };
-    var config;
-    if(isNode)
-    config = {
-        'log': function(message){
-            console.log(message);
-        },
-        'info': function(message){
-            console.log(clc.green(message));
-        },
-        'warn': function(message){
-            console.log(clc.yellow(message));
-        },
-        'error': function(message){
-            console.log(clc.red(message));
-        }
-    };
-    else
-    config = {
-        'log': function(message){
-            console.log(message);
-        },
-        'info': function(message){
-            console.info(message);
-        },
-        'warn': function(message){
-            console.warn(message);
-        },
-        'error': function(message){
-            console.error(message);
-        }
-    };
+    var clc = null, config = null;
+    isNode(function(){
+        clc = Npm.require('cli-color');
+        config = {
+            'log': function(message){
+                console.log(message);
+            },
+            'info': function(message){
+                console.log(clc.green(message));
+            },
+            'warn': function(message){
+                console.log(clc.yellow(message));
+            },
+            'error': function(message){
+                console.log(clc.red(message));
+            }
+        };
+    }, function(){
+        config = {
+            'log': function(message){
+                console.log(message);
+            },
+            'info': function(message){
+                console.info(message);
+            },
+            'warn': function(message){
+                console.warn(message);
+            },
+            'error': function(message){
+                console.error(message);
+            }
+        };
+    });
     ['log', 'info', 'warn', 'error'].forEach(function(index){
         root[index] = function(group, message){
             if(!this._runRules(group))
@@ -150,7 +143,6 @@ DEBUGX = (function(){
             config[index](messageString);
         };
     });
-
     return root;
 })();
 

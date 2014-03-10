@@ -8,10 +8,10 @@ isNode = (function(){
                 node = false;
             }
         }
-        if(_.isFunction(node)){
+        if(_.isFunction(node) && node){
             node();
         }
-        if(_.isFunction(browser)){
+        else if(_.isFunction(browser)){
             browser();
         }
     }

@@ -10,6 +10,7 @@ Npm.depends({
 Package.on_use(function (api) {
 	api.use('underscore', ['client', 'server']);
 	api.add_files([
+		'boot.js',
 		'debugx.js',
 		'export.js'
 	], ['client', 'server']);

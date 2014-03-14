@@ -1,14 +1,14 @@
 isNode = (function(){
-    var node = null;
+    var isNode = null;
     return function(node, browser){
-        if(node == null){
+        if(isNode == null){
             if (typeof window === 'undefined') {
-                node = true;
+                isNode = true;
             } else {
-                node = false;
+                isNode = false;
             }
         }
-        if(_.isFunction(node) && node){
+        if(_.isFunction(node) && isNode){
             node();
         }
         else if(_.isFunction(browser)){

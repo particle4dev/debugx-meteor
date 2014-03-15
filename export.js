@@ -12,4 +12,5 @@ DEBUGX.format('{{time}} >> {{group}} >> {{message}}');
 DEBUGX.error('print', 'message');
 DEBUGX.warn('print', 'message');
 DEBUGX.info('print', 'message');
+DEBUGX.log('print', 'message red'.color('red') + 'message red'.color('green'));
 */

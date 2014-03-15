@@ -118,6 +118,16 @@ DEBUGX = (function(){
                 console.log(clc.red(message));
             }
         };
+        String.prototype.color = function(color){
+            var colorsList =  ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'];
+            var index = colorsList.indexOf(color);
+            if( index != -1){
+                index = colorsList[index];
+                return clc[index](this);
+            }
+            else
+                return this;
+        };
     }, function(){
         config = {
             'log': function(message){
@@ -132,6 +142,9 @@ DEBUGX = (function(){
             'error': function(message){
                 console.error(message);
             }
+        };
+        String.prototype.color = function(){
+            return this;
         };
     });
     ['log', 'info', 'warn', 'error'].forEach(function(index){

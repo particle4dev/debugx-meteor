@@ -1,7 +1,7 @@
 isNode = (function(){
     var isNode = null;
     return function(node, browser){
-        if(isNode == null){
+        if(isNode === null){
             if (typeof window === 'undefined') {
                 isNode = true;
             } else {
@@ -14,5 +14,5 @@ isNode = (function(){
         else if(_.isFunction(browser)){
             browser();
         }
-    }
+    };
 })();

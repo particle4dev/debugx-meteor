@@ -1,3 +1,5 @@
+WARNING: This project is outdated and not maintained anymore.
+
 ### Install
 Add packages to your project by using command
 

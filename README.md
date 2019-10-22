@@ -1,4 +1,4 @@
-###Install
+### Install
 Add packages to your project by using command
 
 #### Meteor v0.9.0
@@ -6,7 +6,7 @@ Add packages to your project by using command
     meteor add particle4dev:debugx
 ###
 
-###Quick start
+### Quick start
 
     DEBUGX.allow('*');
     DEBUGX.deny('*');
@@ -22,15 +22,15 @@ Add packages to your project by using command
     DEBUGX.info('print', 'message');
     DEBUGX.log('print', 'message red'.color('red') + 'message red'.color('green'));
 
-###API
+### API
 
-###Color Rules
+### Color Rules
 
 * Error : Red
 * Info : white
 * Warn : yellow
 * Trace: cyan
 
-###Todo
+### Todo
 
 * write logs file
